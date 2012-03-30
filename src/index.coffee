@@ -1,5 +1,5 @@
 iced = require 'iced-coffee-script'
-
+sysPath = require 'path'
 # Example
 # 
 #   capitalize 'test'
@@ -35,11 +35,11 @@ module.exports = class IcedCoffeeScriptCompiler
 
   compile: (data, path, callback) ->
     try
-      result = iced.compile data
+      result = iced.compile data, {runtime:"inline"}
     catch err
       error = err
     finally
       callback error, result
       
-  include: ->
-    [sysPath.join __dirname, '..', 'vendor', 'iced-coffee-script.js']
+  #include: ->
+   # [sysPath.join __dirname, '..', 'vendor', 'iced-coffee-script.js']
